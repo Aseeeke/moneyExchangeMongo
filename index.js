@@ -79,7 +79,7 @@ app.get("/api/orders/:userId", async (req, res) => {
     const filteredResults = result.map(order => {
         return {
             _id: order._id,
-            currency: order.firstCurrency,
+            firstCurrency: order.firstCurrency,
             amount: order.amount
         }
     })
