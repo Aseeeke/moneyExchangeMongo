@@ -71,6 +71,7 @@ app.delete("/api/orders/:id/:userId", async (req, res) => {
     }
 })
 app.get("/api/orders/:userId", async (req, res) => {
+    console.log(req.params)
     const result = await Order.find({userId: req.params.userId })
     const filteredResults = result.map(order => {
         return {
