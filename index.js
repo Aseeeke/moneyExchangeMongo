@@ -18,6 +18,9 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 })
 
 app.post("/api/orders", async (req, res) => {
+
+    console.log(req.body , 'in post')
+
     const newOrder = new Order({
         userId: req.body.userId,
         name: req.body.name,
@@ -71,7 +74,7 @@ app.delete("/api/orders/:id/:userId", async (req, res) => {
     }
 })
 app.get("/api/orders/:userId", async (req, res) => {
-    console.log(req.params)
+    console.log(req.params, 'in get users orders')
     const result = await Order.find({userId: req.params.userId })
     const filteredResults = result.map(order => {
         return {
