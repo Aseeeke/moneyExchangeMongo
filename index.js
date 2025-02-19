@@ -88,12 +88,10 @@ app.get("/api/orders/:userId", async (req, res) => {
 app.get("/api/orders/:userId/:currency/:amount", async (req, res) => {
     const currency = req.params.currency;
     const amount = Number(req.params.amount);
-    const userId = req.params.userId;
 
     console.log(req.params)
 
     const result = await Order.find({
-        userId: {$ne: userId},
         firstCurrency: currency,
         amount: {$gte: amount}
     })
